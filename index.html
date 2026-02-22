@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>QuickPost — Pitch Deck</title>
+
+  <!-- Reveal.js CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       LINKEDIN COLOR SYSTEM
+    ═══════════════════════════════════════════ */
+    :root {
+      --li-bg:         #F4F2EE;
+      --li-white:      #FFFFFF;
+      --li-blue:       #0A66C2;
+      --li-blue-light: #EBF3FB;
+      --li-blue-hover: #004182;
+      --li-green:      #057642;
+      --li-red:        #CC1016;
+      --li-amber:      #E5730A;
+      --li-text:       #1C1C1C;
+      --li-text-2:     #434649;
+      --li-text-3:     #666666;
+      --li-border:     #E0DFDC;
+      --li-shadow:     0 0 0 1px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+      --li-radius:     8px;
+    }
+
+    /* ═══════════════════════════════════════════
+       REVEAL OVERRIDES
+    ═══════════════════════════════════════════ */
+    .reveal-viewport { background: var(--li-bg); }
+
+    .reveal {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--li-text);
+      font-size: 18px;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      text-transform: none;
+      letter-spacing: -0.01em;
+      color: var(--li-text);
+      text-shadow: none;
+      margin: 0;
+    }
+
+    .reveal .slides        { text-align: left; }
+    .reveal section        { padding: 0; height: 100%; }
+    .reveal .slides section { display: flex !important; flex-direction: column; justify-content: center; }
+    .reveal .progress      { background: rgba(10,102,194,0.15); }
+    .reveal .progress span { background: var(--li-blue); }
+    .reveal .controls      { color: var(--li-blue); }
+    .reveal .slide-number  {
+      background: transparent;
+      color: var(--li-text-3);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75em;
+    }
+
+    /* ═══════════════════════════════════════════
+       SLIDE SCAFFOLD
+    ═══════════════════════════════════════════ */
+    .slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: var(--li-bg);
+      padding: 36px 64px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════════
+       LINKEDIN CARD
+    ═══════════════════════════════════════════ */
+    .li-card {
+      background: var(--li-white);
+      border-radius: var(--li-radius);
+      box-shadow: var(--li-shadow);
+      border: 1px solid var(--li-border);
+    }
+
+    /* ═══════════════════════════════════════════
+       LAYOUT HELPERS
+    ═══════════════════════════════════════════ */
+    .two-col { display: flex; gap: 0px; align-items: center; width: 100%; }
+    .col          { flex: 1; }
+    .col-wide     { flex: 1.1; }
+    .col-narrow   { flex: 0.9; }
+
+    /* ═══════════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════════ */
+    .eyebrow {
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--li-blue);
+      margin-bottom: 10px;
+    }
+    .h-display {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.2em;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--li-text);
+      margin-bottom: 14px;
+    }
+    .h-section {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8em;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--li-text);
+      margin-bottom: 10px;
+    }
+    .body-lead {
+      font-size: 1.05em;
+      color: var(--li-text-2);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .body-sm {
+      font-size: 0.82em;
+      color: var(--li-text-3);
+      line-height: 1.55;
+    }
+    .hl       { color: var(--li-blue); }
+    .hl-green { color: var(--li-green); }
+    .bold     { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════
+       SLIDE 1 — COVER
+    ═══════════════════════════════════════════ */
+    .cover-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cover-card {
+      max-width: 720px;
+      width: 100%;
+      padding: 24px 60px 48px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .cover-logo {
+      width: 320px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .cover-wordmark {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.25em;
+      color: var(--li-blue);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .cover-headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3em;
+      font-weight: 900;
+      color: var(--li-text);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .cover-sub {
+      font-size: 1.15em;
+      color: var(--li-text-3);
+      line-height: 1.55;
+      margin-bottom: 36px;
+    }
+    .cover-divider {
+      height: 1px;
+      background: var(--li-border);
+      margin: 28px 0;
+    }
+    .cover-meta {
+      font-size: 0.78em;
+      color: var(--li-text-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .cover-meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--li-border);
+    }
+
+    /* ═══════════════════════════════════════════
+       STAT
+    ═══════════════════════════════════════════ */
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 4.5em;
+      font-weight: 900;
+      color: var(--li-blue);
+      line-height: 1;
+      margin: 0 0 6px;
+    }
+    .stat-label {
+      font-size: 0.95em;
+      font-weight: 600;
+      color: var(--li-text);
+      margin-bottom: 4px;
+    }
+    .stat-sub {
+      font-size: 0.78em;
+      color: var(--li-text-3);
+      margin-bottom: 16px;
+    }
+
+    /* PAIN POINT CARDS */
+    .pain-cards { display: flex; flex-direction: column; gap: 10px; }
+    .pain-card {
+      padding: 14px 18px;
+      border-radius: var(--li-radius);
+      border-left: 4px solid;
+      background: var(--li-white);
+    }
+    .pain-card.red   { border-color: var(--li-red); }
+    .pain-card.amber { border-color: var(--li-amber); }
+    .pain-card.grey  { border-color: var(--li-border); }
+    .pain-card-title { font-weight: 700; font-size: 0.88em; color: var(--li-text); }
+    .pain-card-desc  { font-size: 0.78em; color: var(--li-text-3); margin-top: 2px; }
+
+    .map-img {
+      width: 100%;
+      border-radius: var(--li-radius);
+      object-fit: cover;
+    }
+
+    /* ═══════════════════════════════════════════
+       SLIDE 3 — EXCUSAS
+    ═══════════════════════════════════════════ */
+    .badges-img {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 55%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.55;
+      z-index: 0;
+    }
+    .badges-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--li-bg) 48%, transparent 100%);
+      z-index: 1;
+    }
+    .badges-content { position: relative; z-index: 2; width: 54%; }
+    .badges-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .badge-pill {
+      padding: 20px 22px;
+      border-radius: var(--li-radius);
+      background: var(--li-white);
+      border: 1.5px solid var(--li-blue);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.92em;
+      color: var(--li-text);
+      box-shadow: var(--li-shadow);
+      line-height: 1.35;
+    }
+    .badge-pill::before {
+      content: '"';
+      color: var(--li-blue);
+      font-size: 1.4em;
+      line-height: 0;
+      vertical-align: -4px;
+      margin-right: 4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       STEP INDICATOR
+    ═══════════════════════════════════════════ */
+    .step-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      max-width: 360px;
+    }
+    .step-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--li-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.85em;
+      color: var(--li-text-3);
+      background: var(--li-white);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-dot.active {
+      background: var(--li-blue);
+      border-color: var(--li-blue);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(10,102,194,0.18);
+    }
+    .step-dot.done {
+      background: var(--li-green);
+      border-color: var(--li-green);
+      color: #fff;
+    }
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--li-border);
+      margin: 0 -1px;
+    }
+    .step-line.done { background: var(--li-green); }
+    .step-label-row {
+      display: flex;
+      margin-bottom: 24px;
+      max-width: 360px;
+    }
+    .step-label {
+      flex: 1;
+      text-align: center;
+      font-size: 0.68em;
+      color: var(--li-text-3);
+      padding: 4px 2px 0;
+    }
+    .step-label.active { color: var(--li-blue); font-weight: 600; }
+
+    /* SOLUTION SLIDES */
+    .sol-left  { flex: 1; }
+    .sol-right { flex: 1.1; display: flex; align-items: center; justify-content: center; }
+    .sol-laptop {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
+    }
+    .sol-step-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2em;
+      font-weight: 800;
+      color: var(--li-text);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .sol-step-desc {
+      font-size: 0.95em;
+      color: var(--li-text-2);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .sol-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--li-blue-light);
+      border: 1px solid rgba(10,102,194,0.25);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.82em;
+      font-weight: 600;
+      color: var(--li-blue);
+    }
+
+    /* ═══════════════════════════════════════════
+       SLIDE 7 — COMPETITION TABLE
+    ═══════════════════════════════════════════ */
+    .comp-table-wrap  { width: 100%; overflow-x: auto; }
+    .comp-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--li-shadow);
+      background: var(--li-white);
+      font-size: 0.88em;
+    }
+    .comp-table thead th {
+      background: var(--li-blue);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      padding: 14px 20px;
+      text-align: center;
+      font-size: 0.9em;
+      letter-spacing: 0.01em;
+    }
+    .comp-table thead th:first-child  { text-align: left; background: var(--li-blue-hover); }
+    .comp-table thead th.winner-col   { background: var(--li-green); }
+    .comp-table tbody tr:hover        { background: #f0f7ff; }
+    .comp-table tbody td {
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--li-border);
+      text-align: center;
+      color: var(--li-text-2);
+      vertical-align: middle;
+    }
+    .comp-table tbody td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--li-text);
+      background: #fafafa;
+    }
+    .comp-table tbody tr:last-child td { border-bottom: none; }
+    .comp-table .winner-col  { background: rgba(5,118,66,0.06); }
+    .chk-yes  { color: var(--li-green); font-size: 1.2em; font-weight: 700; }
+    .chk-no   { color: var(--li-red);   font-size: 1.2em; }
+    .chk-part { color: var(--li-amber); font-size: 0.8em; font-weight: 600; }
+    .comp-price-row td                   { background: var(--li-blue-light) !important; font-weight: 700; color: var(--li-blue) !important; }
+    .comp-price-row td.winner-col        { background: rgba(5,118,66,0.10) !important; color: var(--li-green) !important; }
+    .comp-price-row td:first-child       { color: var(--li-text) !important; background: #f0f0f0 !important; }
+
+    /* ═══════════════════════════════════════════
+       SLIDE 8 — TEAM
+    ═══════════════════════════════════════════ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      margin-top: 24px;
+    }
+    .team-card {
+      border-radius: var(--li-radius);
+      overflow: hidden;
+      background: var(--li-white);
+      box-shadow: var(--li-shadow);
+      border: 1px solid var(--li-border);
+    }
+    .team-card-header { height: 56px; }
+    .team-card-body   { padding: 0 20px 22px; }
+    .team-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: #CFD9DE;
+      border: 3px solid var(--li-white);
+      margin-top: -36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      box-shadow: 0 0 0 1px var(--li-border);
+    }
+    .team-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.05em;
+      color: var(--li-text);
+      margin-bottom: 4px;
+    }
+    .team-role {
+      display: inline-block;
+      background: var(--li-blue);
+      color: #fff;
+      font-size: 0.68em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .team-skills { list-style: none; padding: 0; margin: 0; }
+    .team-skills li {
+      font-size: 0.78em;
+      color: var(--li-text-2);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--li-border);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .team-skills li:last-child { border-bottom: none; }
+    .team-skills li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--li-blue);
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       SHARED HELPERS
+    ═══════════════════════════════════════════ */
+    .slide-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--li-blue-light);
+      color: var(--li-blue);
+      font-size: 0.7em;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .divider-li { height: 1px; background: var(--li-border); margin: 20px 0; }
+    .pill {
+      display: inline-block;
+      background: var(--li-blue-light);
+      color: var(--li-blue);
+      border: 1px solid rgba(10,102,194,0.2);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 0.78em;
+      font-weight: 600;
+    }
+    .pill.green {
+      background: rgba(5,118,66,0.1);
+      color: var(--li-green);
+      border-color: rgba(5,118,66,0.2);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .slide { padding: 36px 32px; }
+      .two-col { flex-direction: column; gap: 28px; }
+      .badges-img { display: none; }
+      .badges-content { width: 100%; }
+      .badges-overlay { display: none; }
+      .badges-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .h-display { font-size: 2.2em; }
+      .stat-num { font-size: 4.5em; }
+    }
+    @media (max-width: 600px) {
+      .slide { padding: 24px 18px; }
+      .cover-card { padding: 32px 24px; }
+      .cover-headline { font-size: 2em; }
+      .h-section { font-size: 1.6em; }
+      .sol-step-title { font-size: 1.5em; }
+      .comp-table { font-size: 0.72em; }
+      .comp-table thead th, .comp-table tbody td { padding: 9px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ══════════════════════════════
+         SLIDE 1 — PORTADA
+    ══════════════════════════════ -->
+    <section data-transition="fade">
+      <div class="slide" style="justify-content:center;">
+        <div class="cover-wrap">
+          <div class="cover-card li-card">
+            <img class="cover-logo" src="images/qp_logo.png" alt="QuickPost logo" />
+            <div class="cover-wordmark">QuickPost</div>
+            <h1 class="cover-headline">LinkedIn sin el trabajo.</h1>
+            <p class="cover-sub">Contenido profesional en <strong>3 minutos.</strong></p>
+            <div class="cover-divider"></div>
+            <div class="cover-meta">
+              <span>Para profesionales LATAM</span>
+              <span class="cover-meta-dot"></span>
+              <span>Asistente de IA</span>
+              <span class="cover-meta-dot"></span>
+              <span>Español nativo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 2 — 88% STAT
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide">
+        <div class="two-col">
+
+          <div class="col-wide">
+            <div class="li-card" style="padding:36px 44px;">
+              <div class="slide-number-badge">02 · El problema</div>
+              <p class="stat-num" style="font-size:5.5em;">88%</p>
+              <p class="stat-label" style="font-size:1.15em;">de profesionales en LATAM no publica en LinkedIn.</p>
+            </div>
+          </div>
+
+          <div class="col-narrow" style="display:flex;align-items:flex-end;justify-content:flex-start;align-self:stretch;">
+            <img class="map-img" src="images/slide2_latam_stat.png" alt="LATAM — solo 12% publica" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 3 — 3 OPCIONES
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide" style="justify-content:center;">
+
+        <div style="width:100%;">
+          <div class="slide-number-badge">03 · El problema</div>
+          <h2 class="h-section" style="margin-bottom:6px;">Las únicas 3 opciones que tenías.</h2>
+
+
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+
+            <!-- Card 1 -->
+            <div class="li-card" style="overflow:hidden;">
+              <div style="height:6px; background:var(--li-red);"></div>
+              <div style="padding:28px 28px 32px;">
+                <img src="images/icon_card1_time.png" style="width:72px;height:72px;object-fit:contain;margin-bottom:18px;display:block;" alt="" />
+                <p style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05em;color:var(--li-text);margin:0;">Hacerlo tú mismo</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="li-card" style="overflow:hidden;">
+              <div style="height:6px; background:var(--li-amber);"></div>
+              <div style="padding:28px 28px 32px;">
+                <img src="images/icon_card2_money.png" style="width:72px;height:72px;object-fit:contain;margin-bottom:18px;display:block;" alt="" />
+                <p style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05em;color:var(--li-text);margin:0;">Contratar alguien</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="li-card" style="overflow:hidden;">
+              <div style="height:6px; background:var(--li-border);"></div>
+              <div style="padding:28px 28px 32px;">
+                <img src="images/icon_card3_invisible.png" style="width:72px;height:72px;object-fit:contain;margin-bottom:18px;display:block;" alt="" />
+                <p style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05em;color:var(--li-text);margin:0;">No hacerlo</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 4 — 4 EXCUSAS
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide" style="padding:52px 80px; justify-content:center;">
+
+        <img class="badges-img" src="images/slide3_badges.png" alt="" aria-hidden="true" />
+        <div class="badges-overlay"></div>
+
+        <div class="badges-content">
+          <div class="slide-number-badge">04 · ¿Te suena familiar?</div>
+          <h2 class="h-section" style="margin-bottom:8px;">Conozco tus excusas.</h2>
+          <p class="body-sm" style="margin-bottom:0;">Las he escuchado 500 veces. Y todas son válidas.</p>
+
+          <div class="badges-grid">
+            <div class="badge-pill">No tengo tiempo.</div>
+            <div class="badge-pill">No sé qué escribir.</div>
+            <div class="badge-pill">No soy bueno escribiendo.</div>
+            <div class="badge-pill">Lo intenté pero lo dejé.</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 4 — PASO 1
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide">
+        <div class="two-col">
+
+          <div class="sol-left">
+            <div class="slide-number-badge">05 · Cómo funciona</div>
+            <div class="step-bar">
+              <div class="step-dot active">1</div>
+              <div class="step-line"></div>
+              <div class="step-dot">2</div>
+              <div class="step-line"></div>
+              <div class="step-dot">3</div>
+            </div>
+            <div class="step-label-row">
+              <div class="step-label active">Cuéntale</div>
+              <div class="step-label">IA genera</div>
+              <div class="step-label">Publica</div>
+            </div>
+            <h2 class="sol-step-title">Cuéntale qué quieres publicar.</h2>
+            <div class="sol-badge" style="margin-top:24px;">📎 Foto · PDF · Notas · Texto libre</div>
+          </div>
+
+          <div class="sol-right" style="display:flex;align-items:center;justify-content:center;">
+            <!-- CSS Laptop Mockup -->
+            <div style="width:440px;position:relative;">
+              <!-- Lid / Screen -->
+              <div style="background:#1d1d1f;border-radius:10px 10px 0 0;padding:10px 14px 8px;box-shadow:0 0 0 1px #3a3a3c;">
+                <!-- Camera dot -->
+                <div style="width:6px;height:6px;background:#3a3a3c;border-radius:50%;margin:0 auto 6px;"></div>
+                <!-- Browser chrome bar -->
+                <div style="background:#2c2c2e;border-radius:6px 6px 0 0;padding:6px 10px;display:flex;align-items:center;gap:6px;">
+                  <div style="width:10px;height:10px;background:#ff5f57;border-radius:50%;"></div>
+                  <div style="width:10px;height:10px;background:#ffbd2e;border-radius:50%;"></div>
+                  <div style="width:10px;height:10px;background:#28c840;border-radius:50%;"></div>
+                  <div style="flex:1;background:#3a3a3c;border-radius:4px;height:16px;margin-left:8px;display:flex;align-items:center;padding:0 8px;">
+                    <span style="font-size:9px;color:#8e8e93;font-family:Inter,sans-serif;overflow:hidden;white-space:nowrap;">app.quickpost.io/crear</span>
+                  </div>
+                </div>
+                <!-- Screen content -->
+                <div style="border-radius:0 0 4px 4px;overflow:hidden;line-height:0;">
+                  <img src="images/Examples/linkedinpostfactoryRef1.png" style="width:100%;display:block;object-fit:cover;" alt="QuickPost app" />
+                </div>
+              </div>
+              <!-- Base hinge -->
+              <div style="background:#a1a1a6;height:4px;border-radius:0;width:100%;"></div>
+              <!-- Keyboard base -->
+              <div style="background:#d1d1d6;border-radius:0 0 10px 10px;height:18px;width:100%;box-shadow:0 4px 12px rgba(0,0,0,0.25);"></div>
+              <!-- Bottom notch -->
+              <div style="width:80px;height:6px;background:#b0b0b5;border-radius:0 0 6px 6px;margin:0 auto;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 5 — PASO 2
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide">
+        <div class="two-col">
+
+          <div class="sol-left">
+            <div class="slide-number-badge">06 · Cómo funciona</div>
+            <div class="step-bar">
+              <div class="step-dot done">✓</div>
+              <div class="step-line done"></div>
+              <div class="step-dot active">2</div>
+              <div class="step-line"></div>
+              <div class="step-dot">3</div>
+            </div>
+            <div class="step-label-row">
+              <div class="step-label">Cuéntale</div>
+              <div class="step-label active">IA genera</div>
+              <div class="step-label">Publica</div>
+            </div>
+            <h2 class="sol-step-title">QuickPost aprende tu voz.</h2>
+            <div class="sol-badge" style="margin-top:24px;">🧠 IA entrenada con tu historial · 3 opciones listas</div>
+          </div>
+
+          <div class="sol-right" style="display:flex;align-items:center;justify-content:center;">
+            <!-- CSS Laptop Mockup with scrollable PDF -->
+            <div style="width:440px;position:relative;">
+              <!-- Lid / Screen -->
+              <div style="background:#1d1d1f;border-radius:10px 10px 0 0;padding:10px 14px 8px;box-shadow:0 0 0 1px #3a3a3c;">
+                <!-- Camera dot -->
+                <div style="width:6px;height:6px;background:#3a3a3c;border-radius:50%;margin:0 auto 6px;"></div>
+                <!-- Browser chrome bar -->
+                <div style="background:#2c2c2e;border-radius:6px 6px 0 0;padding:6px 10px;display:flex;align-items:center;gap:6px;">
+                  <div style="width:10px;height:10px;background:#ff5f57;border-radius:50%;"></div>
+                  <div style="width:10px;height:10px;background:#ffbd2e;border-radius:50%;"></div>
+                  <div style="width:10px;height:10px;background:#28c840;border-radius:50%;"></div>
+                  <div style="flex:1;background:#3a3a3c;border-radius:4px;height:16px;margin-left:8px;display:flex;align-items:center;padding:0 8px;">
+                    <span style="font-size:9px;color:#8e8e93;font-family:Inter,sans-serif;overflow:hidden;white-space:nowrap;">app.quickpost.io/preview</span>
+                  </div>
+                </div>
+                <!-- Screen content: scrollable PDF -->
+                <div style="border-radius:0 0 4px 4px;overflow:hidden;line-height:0;height:280px;">
+                  <iframe src="carousel.pdf#toolbar=0&navpanes=0&scrollbar=1&view=FitH"
+                    style="width:100%;height:100%;border:none;display:block;background:#fff;"
+                    title="QuickPost carousel preview">
+                  </iframe>
+                </div>
+              </div>
+              <!-- Base hinge -->
+              <div style="background:#a1a1a6;height:4px;border-radius:0;width:100%;"></div>
+              <!-- Keyboard base -->
+              <div style="background:#d1d1d6;border-radius:0 0 10px 10px;height:18px;width:100%;box-shadow:0 4px 12px rgba(0,0,0,0.25);"></div>
+              <!-- Bottom notch -->
+              <div style="width:80px;height:6px;background:#b0b0b5;border-radius:0 0 6px 6px;margin:0 auto;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 6 — PASO 3
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide">
+        <div class="two-col">
+
+          <div class="sol-left">
+            <div class="slide-number-badge">07 · Cómo funciona</div>
+            <div class="step-bar">
+              <div class="step-dot done">✓</div>
+              <div class="step-line done"></div>
+              <div class="step-dot done">✓</div>
+              <div class="step-line done"></div>
+              <div class="step-dot active">3</div>
+            </div>
+            <div class="step-label-row">
+              <div class="step-label">Cuéntale</div>
+              <div class="step-label">IA genera</div>
+              <div class="step-label active">Publica</div>
+            </div>
+            <h2 class="sol-step-title">Elige, ajusta y publica.</h2>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;">
+              <span class="pill">⏱ 3 minutos total</span>
+              <span class="pill green">✓ Tu marca crece sola</span>
+            </div>
+          </div>
+
+          <div class="sol-right">
+            <img class="sol-laptop" src="images/slide6_step3.png" alt="Paso 3: elige y publica" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 7 — COMPETITION TABLE
+    ══════════════════════════════ -->
+    <section data-transition="slide">
+      <div class="slide" style="justify-content:flex-start; padding-top:48px;">
+
+        <div style="margin-bottom:20px;">
+          <div class="slide-number-badge">08 · Ventaja competitiva</div>
+          <h2 class="h-section">Hay 3 rutas. Solo una tiene sentido.</h2>
+          <p class="body-sm">Mismo resultado. 1/10 del precio de agencias. 1/5 del precio de Taplio para equipos.</p>
+        </div>
+
+        <div class="comp-table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th style="width:30%;">Característica</th>
+                <th>Agencia / Copywriter</th>
+                <th>Taplio · Jasper</th>
+                <th class="winner-col">⭐ QuickPost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="comp-price-row">
+                <td>Precio / mes</td>
+                <td>$1,000 – $5,000</td>
+                <td>$150 – $1,000</td>
+                <td class="winner-col">$69 – $149</td>
+              </tr>
+              <tr>
+                <td>Español nativo LATAM</td>
+                <td><span class="chk-no">✗</span></td>
+                <td><span class="chk-no">✗</span></td>
+                <td class="winner-col"><span class="chk-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>IA aprende tu voz</td>
+                <td><span class="chk-no">✗</span></td>
+                <td><span class="chk-yes">✓</span></td>
+                <td class="winner-col"><span class="chk-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Listo en minutos</td>
+                <td><span class="chk-no">✗</span></td>
+                <td><span class="chk-no">✗</span></td>
+                <td class="winner-col"><span class="chk-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Sin curva de aprendizaje</td>
+                <td><span class="chk-no">✗</span></td>
+                <td><span class="chk-no">✗</span></td>
+                <td class="winner-col"><span class="chk-yes">✓</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SLIDE 8 — EQUIPO
+    ══════════════════════════════ -->
+    <section data-transition="fade">
+      <div class="slide" style="justify-content:flex-start; padding-top:48px;">
+
+        <div style="margin-bottom:4px;">
+          <div class="slide-number-badge">09 · El equipo</div>
+          <h2 class="h-section">Las 3 piezas que lo hacen posible.</h2>
+        </div>
+
+        <div class="team-grid">
+
+          <!-- Diego: CTO -->
+          <div class="team-card">
+            <div class="team-card-header" style="background:#0A66C2;"></div>
+            <div class="team-card-body">
+              <div class="team-avatar">⚙️</div>
+              <div class="team-name">Diego</div>
+              <div class="team-role" style="background:#0A66C2;">CTO</div>
+              <ul class="team-skills">
+                <li>8 años programando</li>
+                <li>Especialista IA / GPT-4</li>
+                <li>MVP construido en 6 semanas</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Nicolas: CEO -->
+          <div class="team-card">
+            <div class="team-card-header" style="background:#057642;"></div>
+            <div class="team-card-body">
+              <div class="team-avatar">🎯</div>
+              <div class="team-name">Nicolas</div>
+              <div class="team-role" style="background:#057642;">CEO</div>
+              <ul class="team-skills">
+                <li>Ingeniero Industrial</li>
+                <li>Fanático de la simplicidad</li>
+                <li>Si son +5 clicks, lo rediseña</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Gustavo: CPO -->
+          <div class="team-card">
+            <div class="team-card-header" style="background:#5F4B8B;"></div>
+            <div class="team-card-body">
+              <div class="team-avatar">📈</div>
+              <div class="team-name">Gustavo</div>
+              <div class="team-role" style="background:#5F4B8B;">CPO</div>
+              <ul class="team-skills">
+                <li>Operaciones Comerciales</li>
+                <li>Experto Go-to-Market LATAM</li>
+                <li>Vende a MYPEs sin SaaS previo</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /slides -->
+</div><!-- /reveal -->
+
+<!-- Reveal.js scripts -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+
+<script>
+  Reveal.initialize({
+    hash:                    true,
+    view:                    'scroll',
+    scrollProgress:          true,
+    scrollActivationWidth:   null,
+    controls:                true,
+    controlsTutorial:        false,
+    progress:                true,
+    center:                  true,
+    slideNumber:             'c/t',
+    transition:              'none',
+    backgroundTransition:    'none',
+    width:                   1280,
+    height:                  720,
+    margin:                  0.05,
+    minScale:                0.2,
+    maxScale:                2.0,
+    plugins: [ RevealNotes, RevealHighlight ]
+  });
+</script>
+</body>
+</html>
